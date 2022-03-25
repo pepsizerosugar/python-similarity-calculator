@@ -25,28 +25,12 @@ def calculate_similarity(target, comp_target, weight=None):
             t_value = target[key]
             ct_value = comp_target[key]
 
-            if isinstance(t_value, dict) and isinstance(ct_value, dict):
-                score += calculate_similarity(t_value, ct_value, weight)
+            if isinstance(t_value, dict):
+                score += if_target_type_is_dict(t_value, ct_value, weight)
                 continue
 
-            if isinstance(t_value, dict) and isinstance(ct_value, list):
-                for c_item in ct_value:
-                    score += calculate_similarity(c_item, t_value, weight)
-                continue
-
-            if isinstance(t_value, list) and isinstance(ct_value, list):
-                if len(t_value) > len(ct_value):
-                    for i in range(len(ct_value)):
-                        score += calculate_similarity(t_value[i], ct_value[i], weight)
-                    continue
-                else:
-                    for i in range(len(t_value)):
-                        score += calculate_similarity(t_value[i], ct_value[i], weight)
-                    continue
-
-            if isinstance(t_value, list) and isinstance(ct_value, dict):
-                for v_item in t_value:
-                    score += calculate_similarity(v_item, ct_value, weight)
+            if isinstance(t_value, list):
+                score += if_target_type_is_list(t_value, ct_value, weight)
                 continue
 
             if t_value != ct_value:
@@ -58,6 +42,35 @@ def calculate_similarity(target, comp_target, weight=None):
 
 def get_key_weight(keys, weight):
     return 1 / len(keys) if weight is None else weight / len(keys)
+
+
+def if_target_type_is_dict(t_value, ct_value, weight):
+    score = 0
+    if isinstance(ct_value, dict):
+        score += calculate_similarity(t_value, ct_value, weight)
+
+    if isinstance(ct_value, list):
+        for c_item in ct_value:
+            score += calculate_similarity(c_item, t_value, weight)
+
+    return score
+
+
+def if_target_type_is_list(t_value, ct_value, weight):
+    score = 0
+    if isinstance(ct_value, list):
+        if len(t_value) > len(ct_value):
+            for i, ct_item in enumerate(ct_value):
+                score += calculate_similarity(t_value[i], ct_item, weight)
+        else:
+            for i, v_item in enumerate(t_value):
+                score += calculate_similarity(v_item, ct_value[i], weight)
+
+    if isinstance(ct_value, dict):
+        for v_item in t_value:
+            score += calculate_similarity(v_item, ct_value, weight)
+
+    return score
 
 
 def calculate_final_score(num):
