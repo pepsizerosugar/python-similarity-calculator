@@ -6,6 +6,8 @@ basedir = os.path.dirname(__file__)
 
 @dataclass
 class UIElements:
+    data: dict
+
     main_window: None
 
     interaction_group_box: None
@@ -22,12 +24,12 @@ class UIElements:
     target_status_pixmap: None
     comp_target_status_pixmap: None
 
-    target_label: str = ""
-    target_code_label: str = ""
+    target_label: None
+    target_code_label: None
 
-    comp_target_label: str = ""
-    comp_target_code_label: str = ""
+    comp_target_label: None
+    comp_target_code_label: None
 
-    result_label: str = ""
+    result_label: None
 
     styleSheet: str = "QGroupBox { background-color: palette(alternate-base);  border: 1px solid palette(midlight); margin-top: 0px; }"

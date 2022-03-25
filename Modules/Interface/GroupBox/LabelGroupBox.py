@@ -1,11 +1,15 @@
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QGroupBox, QGridLayout, QLabel
+from PyQt5.QtWidgets import QGroupBox, QGridLayout, QLabel, QPushButton, QSizePolicy
 
+from Modules.Handler.ButtonHandler import ButtonHandler
 from Modules.Interface.DataClass.UIElement import UIElements
 
+UIElements.data = {}
 
-class InitTargetLabelGroup:
+
+class InitLabelGroup:
     def __init__(self):
+        super().__init__()
         self.init()
 
     def init(self):
@@ -17,56 +21,41 @@ class InitTargetLabelGroup:
         UIElements.label_group_box.setStyleSheet(UIElements.styleSheet)
         UIElements.label_group_box.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
 
-        self.init_target_label_group_box()
-        self.init_comp_target_label_group_box()
+        self.init_each_label_group_box(["target", "comp_target"])
 
-        UIElements.label_group_box.layout().addWidget(UIElements.target_label_group_box, 0, 0)
-        UIElements.label_group_box.layout().addWidget(UIElements.comp_label_group_box, 0, 1)
-
-    @staticmethod
-    def init_target_label_group_box():
-        UIElements.target_label_group_box = QGroupBox()
-        UIElements.target_label_group_box.setLayout(QGridLayout())
-        UIElements.target_label_group_box.setStyleSheet(UIElements.styleSheet)
-
-        target_label_group = QGroupBox()
-        target_label_group.setLayout(QGridLayout())
-        target_label_group.setStyleSheet(UIElements.styleSheet)
-        target_label_group.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
-
-        target_code_group = QGroupBox()
-        target_code_group.setLayout(QGridLayout())
-        target_code_group.setStyleSheet(UIElements.styleSheet)
-        target_code_group.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
-
-        UIElements.target_label = QLabel()
-        UIElements.target_code_label = QLabel()
-
-        target_label_group.layout().addWidget(UIElements.target_label, 0, 0)
-        target_code_group.layout().addWidget(UIElements.target_code_label, 0, 0)
-        UIElements.target_label_group_box.layout().addWidget(target_label_group, 0, 0)
-        UIElements.target_label_group_box.layout().addWidget(target_code_group, 1, 0)
+        UIElements.label_group_box.layout().addWidget(UIElements.data["target"]["target_label_group_box"], 0, 1)
+        UIElements.label_group_box.layout().addWidget(UIElements.data["comp_target"]["comp_target_label_group_box"], 0, 2)
 
     @staticmethod
-    def init_comp_target_label_group_box():
-        UIElements.comp_label_group_box = QGroupBox()
-        UIElements.comp_label_group_box.setLayout(QGridLayout())
-        UIElements.comp_label_group_box.setStyleSheet(UIElements.styleSheet)
+    def init_each_label_group_box(args):
+        for arg in args:
+            UIElements.data[arg] = {}
+            UIElements.data[arg][arg + "_label_group_box"] = QGroupBox()
+            UIElements.data[arg][arg + "_label_group_box"].setLayout(QGridLayout())
+            UIElements.data[arg][arg + "_label_group_box"].setStyleSheet(UIElements.styleSheet)
 
-        comp_label_group = QGroupBox()
-        comp_label_group.setLayout(QGridLayout())
-        comp_label_group.setStyleSheet(UIElements.styleSheet)
-        comp_label_group.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+            label_group = QGroupBox()
+            label_group.setLayout(QGridLayout())
+            label_group.setStyleSheet(UIElements.styleSheet)
+            label_group.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
 
-        comp_code_group = QGroupBox()
-        comp_code_group.setLayout(QGridLayout())
-        comp_code_group.setStyleSheet(UIElements.styleSheet)
-        comp_code_group.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+            code_group = QGroupBox()
+            code_group.setLayout(QGridLayout())
+            code_group.setStyleSheet(UIElements.styleSheet)
+            code_group.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
 
-        UIElements.comp_target_label = QLabel()
-        UIElements.comp_target_code_label = QLabel()
+            UIElements.data[arg][arg + "_load_button"] = QPushButton('Load')
+            UIElements.data[arg][arg + "_label"] = QLabel("Waiting for load xml file")
+            UIElements.data[arg][arg + "_code_label"] = QLabel()
 
-        comp_label_group.layout().addWidget(UIElements.comp_target_label, 0, 0)
-        comp_code_group.layout().addWidget(UIElements.comp_target_code_label, 0, 0)
-        UIElements.comp_label_group_box.layout().addWidget(comp_label_group, 0, 0)
-        UIElements.comp_label_group_box.layout().addWidget(comp_code_group, 1, 0)
+            UIElements.data[arg][arg + "_load_button"].setMaximumSize(UIElements.data[arg][arg + "_load_button"].sizeHint())
+            if arg == "target":
+                UIElements.data[arg][arg + "_load_button"].clicked.connect(ButtonHandler.target_load_button_clicked)
+            else:
+                UIElements.data[arg][arg + "_load_button"].clicked.connect(ButtonHandler.comp_target_load_button_clicked)
+
+            label_group.layout().addWidget(UIElements.data[arg][arg + "_load_button"], 0, 0)
+            label_group.layout().addWidget(UIElements.data[arg][arg + "_label"], 0, 1)
+            code_group.layout().addWidget(UIElements.data[arg][arg + "_code_label"], 0, 0)
+            UIElements.data[arg][arg + "_label_group_box"].layout().addWidget(label_group, 0, 0)
+            UIElements.data[arg][arg + "_label_group_box"].layout().addWidget(code_group, 1, 0)

@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QGridLayout, QWidget
 
 from Modules.Interface.DataClass.UIElement import UIElements
 from Modules.Interface.GroupBox.InteractionGroupBox import InitInteractionGroup
-from Modules.Interface.GroupBox.LabelGroupBox import InitTargetLabelGroup
+from Modules.Interface.GroupBox.LabelGroupBox import InitLabelGroup
 
 
 class InitUI:
@@ -13,15 +13,12 @@ class InitUI:
         self.main_widget = None
 
     def init_layout(self):
-        # set style
         self.main_layout.setSpacing(10)
         self.main_layout.setContentsMargins(10, 10, 10, 10)
 
-        # init groupbox
         InitInteractionGroup().__init__()
-        InitTargetLabelGroup().__init__()
+        InitLabelGroup().__init__()
 
-        # add elements to layout
         self.main_layout.addWidget(UIElements.interaction_group_box, 0, 0)
         self.main_layout.addWidget(UIElements.label_group_box, 1, 0)
 

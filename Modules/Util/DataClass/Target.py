@@ -3,12 +3,6 @@ from dataclasses import dataclass
 
 @dataclass
 class Targets:
-    target: str = ""
-    target_xml: str = ""
-    target_json: str = ""
-
-    comp_target: str = ""
-    comp_target_xml: str = ""
-    comp_target_json: str = ""
-
+    data: dict = None
     score: float = 0
+    json_path: str = "Resources/json/"
