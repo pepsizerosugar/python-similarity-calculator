@@ -1,4 +1,4 @@
-import PrintHandler
+from Modules.Handler import PrintHandler
 from Modules.Interface.Dialog import Dialogs
 from Modules.Util.DataClass.Targets import Targets
 

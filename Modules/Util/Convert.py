@@ -4,7 +4,7 @@ import pyexpat
 
 import xmltodict
 
-import PrintHandler
+from Modules.Handler import PrintHandler
 from Modules.Interface.DataClass.UIElement import UIElements
 from Modules.Interface.Dialog import Dialogs
 from Modules.Util.DataClass.Targets import Targets
