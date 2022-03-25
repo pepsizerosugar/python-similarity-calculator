@@ -10,12 +10,14 @@ class ButtonHandler:
 
     @staticmethod
     def target_load_button_clicked():
-        clear_labels(["target"]) if convert_progress("target") is False else None
+        if convert_progress("target") is False:
+            clear_labels(["target"])
         check_data_for_button_enable()
 
     @staticmethod
     def comp_target_load_button_clicked():
-        clear_labels(["comp_target"]) if convert_progress("comp_target") is False else None
+        if convert_progress("comp_target") is False:
+            clear_labels(["comp_target"])
         check_data_for_button_enable()
 
     @staticmethod

@@ -23,8 +23,7 @@ def convert_progress(args):
             convert_xml_to_json(Targets.data[args + "_file_name"], Targets.data[args + "_xml"])
             load_json(args, Targets.data[args + "_file_name"])
             return True
-        else:
-            return False
+        return False
     else:
         Dialogs.when_no_file_selected()
         return False
