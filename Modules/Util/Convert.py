@@ -4,10 +4,10 @@ import pyexpat
 
 import xmltodict
 
-import ErrorHandler
+import PrintHandler
 from Modules.Interface.DataClass.UIElement import UIElements
 from Modules.Interface.Dialog import Dialogs
-from Modules.Util.DataClass.Target import Targets
+from Modules.Util.DataClass.Targets import Targets
 
 Targets.data = {}
 
@@ -41,11 +41,11 @@ def convert_xml_to_json(file_name, xml):
             json.dump(json_data, f, indent=2, sort_keys=True, ensure_ascii=False)
 
     except pyexpat.ExpatError as e:
-        ErrorHandler.printing(e)
+        PrintHandler.error(e)
         Dialogs.when_xml_file_is_not_valid()
 
     except Exception as e:
-        ErrorHandler.printing(e)
+        PrintHandler.error(e)
         Dialogs.when_get_error_at_convert_to_json()
 
 
@@ -56,12 +56,12 @@ def load_xml(args, file_path):
         return True
 
     except FileNotFoundError as e:
-        ErrorHandler.printing(e)
+        PrintHandler.error(e)
         Dialogs.when_xml_file_not_found()
         return False
 
     except Exception as e:
-        ErrorHandler.printing(e)
+        PrintHandler.error(e)
         Dialogs.when_get_error_at_load_xml()
         return False
 
@@ -75,11 +75,11 @@ def load_json(args, file_name):
         return True
 
     except FileNotFoundError as e:
-        ErrorHandler.printing(e)
+        PrintHandler.error(e)
         Dialogs.when_json_file_not_found()
         return False
 
     except Exception as e:
-        ErrorHandler.printing(e)
+        PrintHandler.error(e)
         Dialogs.when_get_error_at_load_json()
         return False

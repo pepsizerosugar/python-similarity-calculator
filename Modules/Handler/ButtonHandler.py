@@ -1,8 +1,7 @@
-import ErrorHandler
 from Modules.Interface.DataClass.UIElement import UIElements
 from Modules.Util import Similarity
 from Modules.Util.Convert import convert_progress
-from Modules.Util.DataClass.Target import Targets
+from Modules.Util.DataClass.Targets import Targets
 
 
 class ButtonHandler:
@@ -21,7 +20,7 @@ class ButtonHandler:
 
     @staticmethod
     def calculate_button_clicked():
-        Similarity.calculate_similarity(Targets.data["target_json"], Targets.data["comp_target_json"])
+        Similarity.run(Targets.data["target_json"], Targets.data["comp_target_json"])
 
     @staticmethod
     def clear_button_clicked():
@@ -35,7 +34,6 @@ def check_data_for_button_enable():
         else:
             UIElements.calculate_button.setEnabled(False)
     except KeyError as e:
-        ErrorHandler.printing(e)
         pass
 
 
