@@ -1,0 +1,16 @@
+<example>
+    <nodes>
+        <value index="0" text="Bye World!" description="This is an example inner value">
+            <node index="0" text="" resource-id="">
+                <name>Node1</name>
+                <value index="0" text="Bye World!" description="This is an example inner node"/>
+            </node>
+        </value>
+        <value index="1" text="Hello World!" description="This is an example inner value">
+            <node index="0" text="" resource-id="">
+                <name>Node2</name>
+                <value index="0" text="Hello World!" description="This is an example inner node"/>
+            </node>
+        </value>
+    </nodes>
+</example>
