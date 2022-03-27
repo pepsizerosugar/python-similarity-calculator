@@ -2,8 +2,8 @@
 
 ![Version](https://img.shields.io/badge/Version-1.0.0-green)
 ![Update](https://img.shields.io/badge/Update-2022.03.27-blue)
-[![CodeFactor](https://www.codefactor.io/repository/github/pepsizerosugar/xml-similarity-calculator/badge)](https://www.codefactor.io/repository/github/pepsizerosugar/xml-similarity-calculator)
-![GitHub all releases](https://img.shields.io/github/downloads/pepsizerosugar/xml-similarity-calculator/total?color=orange)
+[![CodeFactor](https://www.codefactor.io/repository/github/pepsizerosugar/python-similarity-calculator/badge)](https://www.codefactor.io/repository/github/pepsizerosugar/python-similarity-calculator)
+![GitHub all releases](https://img.shields.io/github/downloads/pepsizerosugar/python-similarity-calculator/total?color=orange)
 
 * Calculate similarity between two XML or JSON files.
 * If selected xml file then convert xml to dict format for check similarity score
@@ -29,11 +29,11 @@
 
 ### 1-1. Installation
 
-1. Download the latest version from [GitHub](https://github.com/pepsizerosugar/xml-similarity-calculator/releases).
+1. Download the latest version from [GitHub](https://github.com/pepsizerosugar/python-similarity-calculator/releases).
     1. Build Main.py using build.bat or just run with your interpreter setting.
     2. When build is finish, you can run the Calculator.exe in the 'dist' folder.
 2. Or download the latest binary file what name "Calculator.zip"
-   from [GitHub](https://github.com/pepsizerosugar/xml-similarity-calculator/releases) and unzip it.
+   from [GitHub](https://github.com/pepsizerosugar/python-similarity-calculator/releases) and unzip it.
     1. Run the Calculator.exe
 
 ### 1-2. How to use
