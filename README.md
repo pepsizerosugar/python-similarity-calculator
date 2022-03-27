@@ -13,7 +13,7 @@
     * [xmltodict](https://github.com/martinblech/xmltodict) library
 
 <br>
-<img src="./Resources/Img/demo.gif" alt="">
+<img src="./Resources/img/demo.gif" alt="">
 <br><br>
 
 ## 0. Change Log
@@ -55,7 +55,7 @@
     * Weight is calculated by the following formula.
         * If the node is the root node, the weight is 1.
         * score = parents_node_weight / same_depth_node_count
-        * <img src="./Resources/Img/weight.png" alt="">
+        * <img src="./Resources/img/weight.png" alt="">
 * Score
   * Simply the score of each node is the sum of the scores of the child nodes, and weight is the score.
   * Array (List)
