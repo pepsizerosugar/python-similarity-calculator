@@ -127,6 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-/Resources/xml/private/
-/Resources/json/
+
 /.idea
+/Resources/xml/private/
+/Resources/converted_json/

@@ -17,7 +17,6 @@ class InitInteractionGroup:
 
         UIElements.calculate_button = QPushButton('Calculate')
         UIElements.clear_button = QPushButton('Clear')
-        UIElements.calculate_button.setEnabled(False)
 
         from Modules.Handler.ButtonHandler import ButtonHandler
         UIElements.calculate_button.clicked.connect(ButtonHandler.calculate_button_clicked)

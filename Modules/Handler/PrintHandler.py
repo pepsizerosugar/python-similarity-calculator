@@ -17,12 +17,20 @@ def info(key, weight):
         Colors.before_weight = weight
 
 
+def when_none_element_found(weight):
+    print(f"{Colors.WARNING}[WARN] none element detected {weight}{Colors.RESET}")
+
+
 def when_key_is_not_in_comparison_target(key, weight):
     print(f"{Colors.WARNING}[WARN] {key} is not in comparison target with weight: {weight}{Colors.RESET}")
 
 
 def when_key_is_not_equal_to_comparison_target(key, weight, target_key, comp_target_key):
     print(f"{Colors.WARNING}[WARN] key: {key} value: \"{target_key}\" is not equal to \"{comp_target_key}\" with weight: {weight}")
+
+
+def when_dict_is_not_in_comparison_target(dict, weight):
+    print(f"{Colors.WARNING}[WARN] {dict} is not in comparison target with weight: {weight}{Colors.RESET}")
 
 
 def final_score(num):

@@ -1,7 +1,7 @@
 from Modules.Interface.DataClass.UIElement import UIElements
-from Modules.Util import Similarity
+from Modules.Interface.Dialog import Dialogs
 from Modules.Util.Convert import convert_progress
-from Modules.Util.DataClass.Targets import Targets
+from Modules.Util.Similarity.Runner import run
 
 
 class ButtonHandler:
@@ -12,35 +12,33 @@ class ButtonHandler:
     def target_load_button_clicked():
         if convert_progress("target") is False:
             clear_labels(["target"])
-        check_data_for_button_enable()
 
     @staticmethod
     def comp_target_load_button_clicked():
         if convert_progress("comp_target") is False:
             clear_labels(["comp_target"])
-        check_data_for_button_enable()
 
     @staticmethod
     def calculate_button_clicked():
-        Similarity.run(Targets.data["target_json"], Targets.data["comp_target_json"])
+        if check_data():
+            run(UIElements.data["target"]["target_code_label"].toPlainText(),
+                UIElements.data["comp_target"]["comp_target_code_label"].toPlainText())
+        else:
+            Dialogs.when_not_enough_data()
 
     @staticmethod
     def clear_button_clicked():
         clear_labels(["target", "comp_target"])
 
 
-def check_data_for_button_enable():
-    try:
-        if Targets.data["target_json"] and Targets.data["comp_target_json"]:
-            UIElements.calculate_button.setEnabled(True)
-        else:
-            UIElements.calculate_button.setEnabled(False)
-    except KeyError as e:
-        pass
+def check_data():
+    if UIElements.data["target"]["target_code_label"].toPlainText() and \
+            UIElements.data["comp_target"]["comp_target_code_label"].toPlainText():
+        return True
+    return False
 
 
 def clear_labels(args):
     for arg in args:
         UIElements.data[arg][arg + "_label"].setText("Waiting for load xml file")
-        UIElements.data[arg][arg + "_code_label"].setText("")
-    UIElements.calculate_button.setEnabled(False)
+        UIElements.data[arg][arg + "_code_label"].clear()

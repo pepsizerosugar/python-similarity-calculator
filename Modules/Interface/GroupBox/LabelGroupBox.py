@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QGroupBox, QGridLayout, QLabel, QPushButton, QSizePolicy
+from PyQt5.QtWidgets import QGroupBox, QGridLayout, QLabel, QPushButton, QSizePolicy, QTextEdit
 
 from Modules.Handler.ButtonHandler import ButtonHandler
 from Modules.Interface.DataClass.UIElement import UIElements
@@ -46,9 +46,13 @@ class InitLabelGroup:
 
             UIElements.data[arg][arg + "_load_button"] = QPushButton('Load')
             UIElements.data[arg][arg + "_label"] = QLabel("Waiting for load xml file")
-            UIElements.data[arg][arg + "_code_label"] = QLabel()
+            UIElements.data[arg][arg + "_code_label"] = QTextEdit()
+            scroll_area = QtWidgets.QScrollArea()
+            scroll_area.setWidgetResizable(True)
+            scroll_area.setWidget(UIElements.data[arg][arg + "_code_label"])
 
             UIElements.data[arg][arg + "_load_button"].setMaximumSize(UIElements.data[arg][arg + "_load_button"].sizeHint())
+
             if arg == "target":
                 UIElements.data[arg][arg + "_load_button"].clicked.connect(ButtonHandler.target_load_button_clicked)
             else:
@@ -56,6 +60,6 @@ class InitLabelGroup:
 
             label_group.layout().addWidget(UIElements.data[arg][arg + "_load_button"], 0, 0)
             label_group.layout().addWidget(UIElements.data[arg][arg + "_label"], 0, 1)
-            code_group.layout().addWidget(UIElements.data[arg][arg + "_code_label"], 0, 0)
+            code_group.layout().addWidget(scroll_area, 0, 0)
             UIElements.data[arg][arg + "_label_group_box"].layout().addWidget(label_group, 0, 0)
             UIElements.data[arg][arg + "_label_group_box"].layout().addWidget(code_group, 1, 0)

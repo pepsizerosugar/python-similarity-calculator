@@ -4,7 +4,8 @@ from Modules.Interface.DataClass.UIElement import UIElements
 
 
 def when_try_to_load_file():
-    return QFileDialog.getOpenFileName(UIElements.main_window, "Open XML File", "", "XML Files (*.xml)")[0]
+    return QFileDialog.getOpenFileName(UIElements.main_window, "Open XML or JSON File", "",
+                                       "XML or JSON Files (*.xml *.json)")[0]
 
 
 def when_load_success():
@@ -38,6 +39,14 @@ def when_xml_file_is_not_valid():
 
 def when_get_error_at_convert_to_json():
     QMessageBox.critical(UIElements.main_window, 'Error', 'Error while converting xml to json!')
+
+
+def when_not_enough_data():
+    QMessageBox.critical(UIElements.main_window, 'Error', 'Not enough data to calculate similarity!\nPlease load or edit data.')
+
+
+def when_data_is_not_valid():
+    QMessageBox.critical(UIElements.main_window, 'Error', 'Data is not valid!\nPlease check the data and try again.')
 
 
 def when_calculate_complete(score):

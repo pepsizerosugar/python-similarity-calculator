@@ -16,7 +16,6 @@ class Main(QMainWindow):
         super().__init__()
         UIElements.main_window = self
         InitUI().init_layout()
-        print("[INFO] Use console for more information.")
 
 
 if __name__ == '__main__':
@@ -31,7 +30,7 @@ if __name__ == '__main__':
     window.setWindowTitle("XML Similarity Calculator")
 
     mw = qtmodern.windows.ModernWindow(window)
-    mw.setFixedSize(1280, 720)
+    mw.resize(1280, 1024)
 
     # move to center of screen
     qr = mw.frameGeometry()
