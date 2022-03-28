@@ -14,6 +14,7 @@ class UIElements:
     target_load_button: None
     comp_target_load_button: None
     calculate_button: None
+    switch_button: None
     clear_button: None
 
     label_group_box: None

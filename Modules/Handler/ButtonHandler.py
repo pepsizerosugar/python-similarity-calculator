@@ -5,18 +5,25 @@ from Modules.Util.Similarity.Runner import run
 
 
 class ButtonHandler:
+    t_loaded = False
+    ct_loaded = False
+
     def __init__(self):
         super().__init__()
 
-    @staticmethod
-    def target_load_button_clicked():
+    @classmethod
+    def target_load_button_clicked(cls):
         if convert_progress("target") is False:
             clear_labels(["target"])
+        else:
+            cls.t_loaded = True
 
-    @staticmethod
-    def comp_target_load_button_clicked():
+    @classmethod
+    def comp_target_load_button_clicked(cls):
         if convert_progress("comp_target") is False:
             clear_labels(["comp_target"])
+        else:
+            cls.ct_loaded = True
 
     @staticmethod
     def calculate_button_clicked():
@@ -27,8 +34,15 @@ class ButtonHandler:
             Dialogs.when_not_enough_data()
 
     @staticmethod
-    def clear_button_clicked():
+    def switch_button_clicked():
+        from Modules.Util.Interface.SwitchLabel import switch_label
+        switch_label()
+
+    @classmethod
+    def clear_button_clicked(cls):
         clear_labels(["target", "comp_target"])
+        cls.t_loaded = False
+        cls.ct_loaded = False
 
 
 def check_data():

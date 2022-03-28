@@ -16,6 +16,7 @@ def if_list_and_list(target_list, comp_target_list, weight):
     score = 0
     t_len = len(target_list)
     ct_len = len(comp_target_list)
+
     longer_target = target_list if t_len > ct_len else comp_target_list
     diff_in_len = abs(t_len - ct_len)
     weight = Util.get_key_weight(longer_target, weight * t_len)
@@ -31,10 +32,9 @@ def if_list_and_list(target_list, comp_target_list, weight):
 
 def if_list_and_dict(target_list, comp_target_dict, weight):
     score = 0
-    dict_score = weight
 
-    for target_item in target_list:
-        dict_score = Util.get_lowest_dict_score(dict_score, target_item, comp_target_dict, weight)
-        score += dict_score
+    if comp_target_dict not in target_list:
+        from Modules.Util.Similarity.Modules.Util import check_dict_in_list
+        score += check_dict_in_list(target_list, comp_target_dict, weight)
 
     return score

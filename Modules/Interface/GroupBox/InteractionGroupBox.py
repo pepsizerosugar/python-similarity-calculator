@@ -16,11 +16,14 @@ class InitInteractionGroup:
         UIElements.interaction_group_box.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
 
         UIElements.calculate_button = QPushButton('Calculate')
+        UIElements.switch_button = QPushButton('Switch')
         UIElements.clear_button = QPushButton('Clear')
 
         from Modules.Handler.ButtonHandler import ButtonHandler
         UIElements.calculate_button.clicked.connect(ButtonHandler.calculate_button_clicked)
+        UIElements.switch_button.clicked.connect(ButtonHandler.switch_button_clicked)
         UIElements.clear_button.clicked.connect(ButtonHandler.clear_button_clicked)
 
         UIElements.interaction_group_box.layout().addWidget(UIElements.calculate_button, 0, 1)
-        UIElements.interaction_group_box.layout().addWidget(UIElements.clear_button, 0, 2)
+        UIElements.interaction_group_box.layout().addWidget(UIElements.switch_button, 0, 2)
+        UIElements.interaction_group_box.layout().addWidget(UIElements.clear_button, 0, 3)

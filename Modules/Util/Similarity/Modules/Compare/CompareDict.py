@@ -20,8 +20,8 @@ def if_dict_and_dict(target_dict, comp_target_dict, weight):
 
     intersection = Util.get_intersection(target_dict, comp_target_dict)
     longer_target = target_dict if t_len > ct_len else comp_target_dict
-    non_intersection_weight = weight * (len(longer_target) - len(intersection))
     weight = Util.get_key_weight(longer_target, weight * t_len)
+    non_intersection_weight = weight * (len(longer_target) - len(intersection))
 
     if intersection:
         for key in intersection:
