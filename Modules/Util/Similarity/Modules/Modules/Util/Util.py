@@ -62,14 +62,18 @@ def calculate_final_score(num):
 def is_json(json_str):
     try:
         json.loads(json_str)
+        return True
     except JSONDecodeError:
         return False
-    return True
+    except TypeError:
+        return False
 
 
 def is_xml(xml_str):
     try:
         fromstring(xml_str)
+        return True
     except ElementTree.ParseError:
         return False
-    return True
+    except TypeError:
+        return False
