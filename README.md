@@ -22,6 +22,7 @@
 ### version 1.0.1 (2022.03.28)
 
 * Commit history
+    * [pepsi-21] FIX: xml ParseError handling
     * [pepsi-17] FIX: complexity improvement for long and deep nodes
     * [pepsi-16] FEAT: add function to switch each target
     * [pepsi-15] FIX: different issues depending on weight allocation order

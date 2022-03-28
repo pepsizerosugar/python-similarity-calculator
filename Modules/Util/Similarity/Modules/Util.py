@@ -1,6 +1,7 @@
 import json
 from json import JSONDecodeError
 
+from defusedxml import ElementTree
 from defusedxml.ElementTree import fromstring
 
 
@@ -69,6 +70,6 @@ def is_json(json_str):
 def is_xml(xml_str):
     try:
         fromstring(xml_str)
-    except fromstring.ParseError:
+    except ElementTree.ParseError:
         return False
     return True
