@@ -1,6 +1,6 @@
 # python-similarity-calculator
 
-![Version](https://img.shields.io/badge/Version-1.0.1-green)
+![Version](https://img.shields.io/badge/Version-1.0.2-green)
 ![Update](https://img.shields.io/badge/Update-2022.03.28-blue)
 [![CodeFactor](https://www.codefactor.io/repository/github/pepsizerosugar/python-similarity-calculator/badge)](https://www.codefactor.io/repository/github/pepsizerosugar/python-similarity-calculator)
 ![GitHub all releases](https://img.shields.io/github/downloads/pepsizerosugar/python-similarity-calculator/total?color=orange)
@@ -19,14 +19,11 @@
 
 ## 0. Change Log
 
-### version 1.0.1 (2022.03.28)
+### version 1.0.2 (2022.03.28)
 
 * Commit history
-    * [pepsi-21] FIX: xml ParseError handling
-    * [pepsi-17] FIX: complexity improvement for long and deep nodes
-    * [pepsi-16] FEAT: add function to switch each target
-    * [pepsi-15] FIX: different issues depending on weight allocation order
-    * [pepsi-14] FEAT: add load status of each target
+    * [pepsi-23] FIX: logic of load each target at start of calculation
+    * [pepsi-22] REFACTOR: change name of dataclass "Targets" to "Cache"
 
 <br>
 
