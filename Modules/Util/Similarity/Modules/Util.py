@@ -1,6 +1,6 @@
 import json
-import xml.etree.ElementTree as elementTree
 from json import JSONDecodeError
+from defusedxml.ElementTree import fromstring
 
 
 def get_key_weight(target, weight):
@@ -50,7 +50,7 @@ def is_json(json_str):
 
 def is_xml(xml_str):
     try:
-        elementTree.fromstring(xml_str)
-    except elementTree.ParseError:
+        fromstring(xml_str)
+    except fromstring.ParseError:
         return False
     return True

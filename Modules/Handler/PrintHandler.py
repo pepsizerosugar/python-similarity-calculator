@@ -29,8 +29,8 @@ def when_key_is_not_equal_to_comparison_target(key, weight, target_key, comp_tar
     print(f"{Colors.WARNING}[WARN] key: {key} value: \"{target_key}\" is not equal to \"{comp_target_key}\" with weight: {weight}")
 
 
-def when_dict_is_not_in_comparison_target(dict, weight):
-    print(f"{Colors.WARNING}[WARN] {dict} is not in comparison target with weight: {weight}{Colors.RESET}")
+def when_dict_is_not_in_comparison_target(dict_, weight):
+    print(f"{Colors.WARNING}[WARN] {dict_} is not in comparison target with weight: {weight}{Colors.RESET}")
 
 
 def final_score(num):

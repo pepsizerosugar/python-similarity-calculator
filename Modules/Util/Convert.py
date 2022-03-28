@@ -22,9 +22,9 @@ def convert_progress(args):
             if load_xml(args, Targets.data[args + "_path"]):
                 UIElements.data[args][args + "_label"].setText(Targets.data[args + "_file_name"])
                 UIElements.data[args][args + "_code_label"].setText(Targets.data[args + "_xml"])
-                
-                convert_xml_to_json(Targets.data[args + "_path"], Targets.data[args + "_xml"])
-                load_json(args, Targets.data[args + "_path"], 1)
+
+                if convert_xml_to_json(Targets.data[args + "_path"], Targets.data[args + "_xml"]):
+                    load_json(args, Targets.data[args + "_path"], 1)
                 return True
         return False
     if file_ext == ".json":
@@ -50,13 +50,17 @@ def convert_xml_to_json(xml_path, xml):
         with open(Targets.json_path + json_file_name, 'w', encoding="utf-8") as f:
             json.dump(json_data, f, indent=2, sort_keys=True, ensure_ascii=False)
 
+        return True
+
     except pyexpat.ExpatError as e:
         PrintHandler.error(e)
         Dialogs.when_xml_file_is_not_valid()
+        return False
 
     except Exception as e:
         PrintHandler.error(e)
         Dialogs.when_get_error_at_convert_to_json()
+        return False
 
 
 def load_xml(args, file_path):
