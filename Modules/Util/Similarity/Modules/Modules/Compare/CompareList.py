@@ -1,4 +1,4 @@
-from Modules.Util.Similarity.Modules import Util
+from Modules.Util.Similarity.Modules.Modules.Util import Util
 
 
 def if_target_is_list(target_list, comp_target, weight):
@@ -34,7 +34,7 @@ def if_list_and_dict(target_list, comp_target_dict, weight):
     score = 0
 
     if comp_target_dict not in target_list:
-        from Modules.Util.Similarity.Modules.Util import check_dict_in_list
+        from Modules.Util.Similarity.Modules.Modules.Util.Util import check_dict_in_list
         score += check_dict_in_list(target_list, comp_target_dict, weight)
 
     return score

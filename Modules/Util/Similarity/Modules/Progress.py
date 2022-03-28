@@ -1,5 +1,5 @@
-from Modules.Util.Similarity.Modules import Util
-from Modules.Util.Similarity.Modules.Compare import CompareDict, CompareList
+from Modules.Util.Similarity.Modules.Modules.Compare import CompareList, CompareDict
+from Modules.Util.Similarity.Modules.Modules.Util import Util
 
 
 def calculate_progress(target, comp_target, weight=None):

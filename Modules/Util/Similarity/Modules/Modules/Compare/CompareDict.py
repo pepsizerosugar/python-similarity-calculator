@@ -1,4 +1,5 @@
-from Modules.Util.Similarity.Modules import Util, Progress
+from Modules.Util.Similarity.Modules import Progress
+from Modules.Util.Similarity.Modules.Modules.Util import Util
 
 
 def if_target_is_dict(target_dict, comp_target, weight):
